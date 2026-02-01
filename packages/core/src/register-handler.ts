@@ -61,8 +61,10 @@ export class RegisterHandler {
       )
     }
 
+    const currentVersion = config.currentVersionFor(eventTypeName)
     return {
-      version: config.currentVersionFor(eventTypeName),
+      version: currentVersion,
+      schemaVersion: currentVersion,
       kind: 'event',
       superKind: RegisterHandler.getSuperKind(eventTypeName),
       entityID,

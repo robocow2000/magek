@@ -369,6 +369,7 @@ function toReadModelRequestEnvelope(
     afterCursor: args.afterCursor,
     paginatedVersion,
     version: 1, // TODO: How to pass the version through GraphQL?
+    schemaVersion: 1,
     select,
   }
 }
@@ -389,6 +390,7 @@ function toEnvelope(typeName: string, value: any, context: GraphQLResolverContex
     typeName: typeName,
     value,
     version: 1, // TODO: How to pass the version through GraphQL?
+    schemaVersion: 1,
     context: {
       request: {
         body: context.context?.request.body,

@@ -220,8 +220,10 @@ export class EventStore {
         return ReducerAction.Skip
       }
 
+      const currentVersion = this.config.currentVersionFor(eventEnvelope.entityTypeName)
       const newSnapshot: NonPersistedEntitySnapshotEnvelope = {
-        version: this.config.currentVersionFor(eventEnvelope.entityTypeName),
+        version: currentVersion,
+        schemaVersion: currentVersion,
         kind: 'snapshot',
         superKind: migratedEventEnvelope.superKind,
         requestID: migratedEventEnvelope.requestID,
